@@ -1,4 +1,4 @@
-let randomNumber = 100;
+let randomNumber = Math.floor(Math.random() * 100) + 1;
 
 
 const guesses = document.querySelector('.guesses');
@@ -7,9 +7,16 @@ const lowOrhigh = document.querySelector('.lowOrHigh');
 
 const guessSubmit = document.querySelector('.guessSubmit');
 const guessField = document.querySelector('.guessField');
+const maxTryText = document.querySelector('.maxTryText');
+const tent5 = document.querySelector('.tent5');
+const tent10 = document.querySelector('.tent10');
+const tent15 = document.querySelector('.tent15');
+
 
 let guessCount = 1;
 let reserGame
+let maxTry = 10;
+maxTryText.textContent = maxTry
 
 function checkNumber() {
 
@@ -35,7 +42,7 @@ function checkNumber() {
             lowOrhigh.textContent = 'Número informado é baixo demais';
         }
 
-        if (guessCount == 10) {
+        if (guessCount = maxTry) {
             lastResult.textContent = 'Perdeu o jogo RUIM';
             guessSubmit.disabled = true;
             guessSubmit.disabled = true;
@@ -48,5 +55,22 @@ function checkNumber() {
     guessField.value='';
     guessField.focus();
 }
+function mudarsetup(value){
+    maxTry = value;
+    maxTryText.textContent = value;
+}
 
+function setup5(){
+    mudarsetup(5);
+}
+
+function setup10(){
+    mudarsetup(10);
+}
+function setup15(){
+    mudarsetup(15);
+}
 guessSubmit.addEventListener('click', checkNumber);
+tent5.addEventListener('click', setup5);
+tent10.addEventListener('click', setup10);
+tent15.addEventListener('click', setup15);
