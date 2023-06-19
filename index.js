@@ -12,11 +12,33 @@ const tent5 = document.querySelector('.tent5');
 const tent10 = document.querySelector('.tent10');
 const tent15 = document.querySelector('.tent15');
 
-
+let minNumber = 1;
+let maxNumber = 100;
 let guessCount = 1;
 let reserGame
 let maxTry = 10;
 maxTryText.textContent = maxTry
+
+function mudarsetup(){
+    minNumber = min;
+    maxNumber = max;
+    maxTryText.textContent = maxTry;
+    resetgame();
+}
+
+function resetgame(){
+    guessCount = 1;
+  guesses.textContent = '';
+  lastResult.textContent = '';
+  lowOrhigh.textContent = '';
+  guessSubmit.disabled = false;
+  guessField.value = '';
+  guessField.focus();
+  maxTryText.textContent = maxTry;
+  randomNumber = Math.floor(Math.random() * (maxNumber - minNumber + 1)) + minNumber;
+}
+
+
 
 function checkNumber() {
 
@@ -42,7 +64,7 @@ function checkNumber() {
             lowOrhigh.textContent = 'Número informado é baixo demais';
         }
 
-        if (guessCount = maxTry) {
+        if (guessCount == maxTry) {
             lastResult.textContent = 'Perdeu o jogo RUIM';
             guessSubmit.disabled = true;
             guessSubmit.disabled = true;
@@ -74,3 +96,6 @@ guessSubmit.addEventListener('click', checkNumber);
 tent5.addEventListener('click', setup5);
 tent10.addEventListener('click', setup10);
 tent15.addEventListener('click', setup15);
+
+
+
